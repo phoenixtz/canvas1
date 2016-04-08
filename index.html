@@ -5,17 +5,30 @@
     <title>Canvas 1</title>
     <script src="jquery-2.1.4.js"></script>
     <script src="canvas.js"></script>
+    <style>
+        #canvas{
+            border: solid;
+        }
+    </style>
 </head>
 <body>
 
+<canvas id="canvas" width="400" height="450"></canvas>
+<a href="#" class="button" id="btn-download" download="download.png">Download</a>
+<input type="button" id="borrar" value="Limpiar" >
 
-<canvas id="canvas" width="400" height="400"></canvas>
 <script type="text/javascript">
     $(document).ready(function() {
         prepareCanvas();
-        b = document.getElementById("boton");
-        b.addEventListener("click",clearCanvas);
     });
+    var button = document.getElementById('btn-download');
+    button.addEventListener('click', function (e) {
+        var dataURL = canvas.toDataURL('image/png');
+        button.href = dataURL;
+    });
+    b = document.getElementById("borrar");
+    b.addEventListener("click",clearCanvas);
+
 </script>
 </body>
 </html>
